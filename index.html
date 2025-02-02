@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Michel | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <nav class="nav-glass">
+    <a href="#accueil">Accueil</a>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="accueil">
+    <h1 class="hero-title">Junior Michel</h1>
+    <p class="hero-subtitle">Étudiant BTS SIO</p>
+  </section>
+
+  <section id="competences">
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3 class="skill-title"><i class="fas fa-code"></i> Frontend</h3>
+        <ul class="skill-items">
+          <li class="skill-item">HTML5 / CSS</li>
+          
+          <li class="skill-item">Responsive Design</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-title"><i class="fas fa-server"></i> Backend</h3>
+        <ul class="skill-items">
+          <li class="skill-item">PHP / Laravel</li>
+          <li class="skill-item">Java</li>
+          <li class="skill-item">MySQL</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-title"><i class="fas fa-tools"></i> Outils</h3>
+        <ul class="skill-items">
+          <li class="skill-item">Git / GitHub</li>
+          <li class="skill-item">Figma</li>
+          <!-- <li class="skill-item">Postman</li> -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-number">01</span>
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">MySQL</span>
+          </div>
+        </div>
+        <h3 class="project-title">Gestion de Stock</h3>
+        <p class="project-description">Application desktop avec interface moderne pour la gestion d'inventaire, incluant un système de reporting.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-number">02</span>
+          <div class="project-tags">
+            <span class="project-tag">Laravel</span>
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">MySQL</span>
+          </div>
+        </div>
+        <h3 class="project-title">Plateforme E-commerce</h3>
+        <p class="project-description">Solution complète avec backoffice administrateur, système de paiement et gestion des commandes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contactez-moi</h2>
+    <p>Si vous souhaitez simplement échanger ou poser une question, n'hésitez pas à m'envoyer un message. Je vous répondrai avec plaisir.</p>
+    <div class="contact-form">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Nom complet" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-input" placeholder="Adresse email" required>
+        </div>
+        <div class="form-group">
+          <textarea class="form-input" rows="4" placeholder="Votre message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Envoyer le message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="far fa-envelope"></i></a>
+    </div>
+    <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    loadTheme();
+
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
