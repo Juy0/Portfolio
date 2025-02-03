@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Michel - Veille Technologique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .veille-hero {
+      background: linear-gradient(135deg, #007BFF, #6610f2);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .veille-hero h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .veille-filtres {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .filtre {
+      padding: 10px 20px;
+      border: none;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: 5px;
+    }
+
+    .filtre.active, .filtre:hover {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .veille-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .veille-article {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .veille-article:hover {
+      transform: translateY(-10px);
+    }
+
+    .veille-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .veille-content {
+      padding: 15px;
+    }
+
+    .veille-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    .categorie {
+      background-color: #007BFF;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .veille-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .veille-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <section class="veille-hero">
+    <h1>Veille Technologique</h1>
+    <p>Analyses et ressources sur les dernières tendances tech</p>
+  </section>
+
+  <div class="veille-filtres">
+    <button class="filtre active" data-categorie="all">Tous</button>
+    <button class="filtre" data-categorie="ia">IA</button>
+    <button class="filtre" data-categorie="securite">Cybersécurité</button>
+  </div>
+
+  <div class="veille-grid">
+    <article class="veille-article" data-categorie="ia">
+      <img src="ia.jpg" alt="IA" class="veille-image">
+      <div class="veille-content">
+        <div class="veille-meta">
+          <span class="categorie">IA</span>
+          <time datetime="2024-06-15">15 Juin 2024</time>
+        </div>
+        <h2>L'évolution des LLM en 2024</h2>
+        <p>Comparatif des derniers modèles de langage...</p>
+        <a href="#article-llm" class="veille-link">Lire l'article</a>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const filtres = document.querySelectorAll('.filtre');
+    const articles = document.querySelectorAll('.veille-article');
+
+    filtres.forEach(filtre => {
+      filtre.addEventListener('click', () => {
+        document.querySelector('.filtre.active').classList.remove('active');
+        filtre.classList.add('active');
+
+        const categorie = filtre.getAttribute('data-categorie');
+
+        articles.forEach(article => {
+          if (categorie === 'all' || article.dataset.categorie === categorie) {
+            article.style.display = 'block';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

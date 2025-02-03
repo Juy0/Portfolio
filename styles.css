@@ -422,4 +422,119 @@
     .skills-grid {
       grid-template-columns: 1fr;
     }
+
+    
   }
+
+  /* === Veille Technologique === */
+#veille {
+  padding: 4rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.veille-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.veille-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.veille-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.6s;
+  z-index: 1;
+}
+
+.veille-card:hover::before {
+  left: 100%;
+}
+
+.veille-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.veille-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.veille-category {
+  background: rgba(184, 159, 123, 0.1);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+}
+
+.veille-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.veille-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.veille-link {
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.veille-link:hover {
+  transform: translateX(5px);
+}
+
+/* Différences subtiles avec les projets */
+.veille-card {
+  border-left: 3px solid var(--accent); /* Ligne d'accentuation */
+}
+
+.veille-card::after {
+  content: '📚';
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0.3; /* Augmentation de l'opacité */
+  font-size: 2rem; /* Taille augmentée */
+  transition: opacity 0.3s ease; /* Animation ajoutée */
+}
+
+.veille-card:hover::after {
+  opacity: 1; /* Effet au survol */
+}
