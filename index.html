@@ -17,7 +17,7 @@
     <a href="#accueil">Accueil</a>
     <a href="#competences">Compétences</a>
     <a href="#projets">Projets</a>
-    <a href="#projets">Veille Technologique
+    <a href="#veille">Veille Technologique
     </a>
     <a href="#contact">Contact</a>
   </nav>
@@ -28,13 +28,15 @@
   </section>
 
   <section id="competences">
+    <h2 class="section-title">Compétences</h2>
+
     <div class="skills-grid">
       <div class="skill-card">
         <h3 class="skill-title"><i class="fas fa-code"></i> Frontend</h3>
         <ul class="skill-items">
           <li class="skill-item">HTML5 / CSS</li>
           
-          <li class="skill-item">Responsive Design</li>
+          <li class="skill-item">Design Responsive</li>
         </ul>
       </div>
       <div class="skill-card">
@@ -49,14 +51,16 @@
         <h3 class="skill-title"><i class="fas fa-tools"></i> Outils</h3>
         <ul class="skill-items">
           <li class="skill-item">Git / GitHub</li>
-          <li class="skill-item">Figma</li>
-          <!-- <li class="skill-item">Postman</li> -->
+          <!-- <li class="skill-item">Figma</li> -->
+          
         </ul>
       </div>
     </div>
   </section>
 
   <section id="projets">
+    <h2 class="section-title">Projets</h2>
+
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-header">
@@ -103,18 +107,18 @@
     <h2>Contactez-moi</h2>
     <p>Si vous souhaitez simplement échanger ou poser une question, n'hésitez pas à m'envoyer un message. Je vous répondrai avec plaisir.</p>
     <div class="contact-form">
-      <form>
+      <form action="contact.php" method="POST" id="contactForm">
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="Nom complet" required>
+            <input type="text" name="name" class="form-input" placeholder="Nom complet" required>
         </div>
         <div class="form-group">
-          <input type="email" class="form-input" placeholder="Adresse email" required>
+            <input type="email" name="email" class="form-input" placeholder="Adresse email" required>
         </div>
         <div class="form-group">
-          <textarea class="form-input" rows="4" placeholder="Votre message" required></textarea>
+            <textarea name="message" class="form-input" rows="4" placeholder="Votre message" required></textarea>
         </div>
         <button type="submit" class="submit-btn">Envoyer le message</button>
-      </form>
+    </form>
     </div>
   </section>
 

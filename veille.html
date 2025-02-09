@@ -4,152 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Junior Michel - Veille Technologique</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    .veille-hero {
-      background: linear-gradient(135deg, #007BFF, #6610f2);
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .veille-hero h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .veille-filtres {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .filtre {
-      padding: 10px 20px;
-      border: none;
-      background-color: #e0e0e0;
-      cursor: pointer;
-      transition: background 0.3s;
-      border-radius: 5px;
-    }
-
-    .filtre.active, .filtre:hover {
-      background-color: #007BFF;
-      color: white;
-    }
-
-    .veille-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-
-    .veille-article {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .veille-article:hover {
-      transform: translateY(-10px);
-    }
-
-    .veille-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .veille-content {
-      padding: 15px;
-    }
-
-    .veille-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9em;
-      color: #777;
-    }
-
-    .categorie {
-      background-color: #007BFF;
-      color: white;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .veille-link {
-      display: inline-block;
-      margin-top: 10px;
-      color: #007BFF;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .veille-link:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles_veille.css">
 </head>
 <body>
-  <section class="veille-hero">
-    <h1>Veille Technologique</h1>
-    <p>Analyses et ressources sur les dernières tendances tech</p>
-  </section>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">← Retour</a>
+      <a href="#articles" class="nav-link">Articles</a>
+      <a href="#ressources" class="nav-link">Ressources</a>
+    </div>
+  </nav>
 
-  <div class="veille-filtres">
-    <button class="filtre active" data-categorie="all">Tous</button>
-    <button class="filtre" data-categorie="ia">IA</button>
-    <button class="filtre" data-categorie="securite">Cybersécurité</button>
-  </div>
+  <!-- Contenu principal -->
+  <main class="main-content">
+    <header class="veille-header">
+      <h1>Veille Technologique</h1>
+      <p>
+        Analyse approfondie des dernières innovations en intelligence artificielle,<br>
+        avec un focus sur les applications pratiques dans le développement web moderne.
+      </p>
+    </header>
 
-  <div class="veille-grid">
-    <article class="veille-article" data-categorie="ia">
-      <img src="ia.jpg" alt="IA" class="veille-image">
-      <div class="veille-content">
-        <div class="veille-meta">
-          <span class="categorie">IA</span>
-          <time datetime="2024-06-15">15 Juin 2024</time>
-        </div>
-        <h2>L'évolution des LLM en 2024</h2>
-        <p>Comparatif des derniers modèles de langage...</p>
-        <a href="#article-llm" class="veille-link">Lire l'article</a>
+    <!-- Section Articles -->
+    <section id="articles" aria-labelledby="articles-heading">
+      <h2 id="articles-heading">Articles</h2>
+      <div class="veille-grid">
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">IA Générative</span>
+            <time datetime="2024-06-15">15 juin 2024</time>
+          </div>
+          <h3>Nouveaux modèles GPT-5</h3>
+          <p>Analyse des capacités et limitations des derniers modèles de traitement du langage...</p>
+          <a href="#" class="article-link">Lire →</a>
+        </article>
       </div>
-    </article>
-  </div>
+    </section>
 
+    <!-- Section Ressources -->
+    <section id="ressources">
+      <h2>Ressources</h2>
+      <p>Section à compléter avec des ressources, liens et outils en rapport avec la veille technologique.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
   <script>
-    const filtres = document.querySelectorAll('.filtre');
-    const articles = document.querySelectorAll('.veille-article');
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
 
-    filtres.forEach(filtre => {
-      filtre.addEventListener('click', () => {
-        document.querySelector('.filtre.active').classList.remove('active');
-        filtre.classList.add('active');
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
 
-        const categorie = filtre.getAttribute('data-categorie');
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
 
-        articles.forEach(article => {
-          if (categorie === 'all' || article.dataset.categorie === categorie) {
-            article.style.display = 'block';
-          } else {
-            article.style.display = 'none';
-          }
+    loadTheme();
+
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.article-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
       });
     });
-  </script>
+
+</script>
+  
 </body>
 </html>

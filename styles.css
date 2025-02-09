@@ -538,3 +538,70 @@
 .veille-card:hover::after {
   opacity: 1; /* Effet au survol */
 }
+
+
+/* Démarcations subtiles */
+section {
+  padding: 6rem 5%;
+  position: relative;
+}
+
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border),
+    transparent
+  );
+}
+
+/* Titres de section améliorés */
+/* Titres de section avec effet de soulignement */
+/* Nouveau style pour les titres de section */
+/* Titres de section améliorés */
+/* Style de base */
+/* Style de base */
+/* Titres de section centrés */
+.section-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.8rem;
+  text-align: center;
+  margin: 6rem auto 4rem; /* Centrage horizontal */
+  width: fit-content; /* Largeur adaptée au contenu */
+  position: relative;
+  padding: 0 2rem;
+  color: var(--text);
+}
+
+/* Effet de soulignement centré */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%); /* Centrage parfait */
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.section-title:hover::after {
+  width: 100%;
+}
+
+/* Version mobile */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+    padding: 0 1rem;
+    margin: 4rem auto 3rem; /* Ajustement mobile */
+  }
+}
