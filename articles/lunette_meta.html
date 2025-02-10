@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunettes Ray-Ban Meta</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_veille.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
+ 
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/portfolio/veille.html" class="nav-link">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="main-content article-container">
+    <header class="article-header">
+      <h1>Lunettes Ray-Ban Meta</h1>
+      <p>Les lunettes connectées Ray-Ban Meta sont équipées de spécifications techniques avancées pour offrir une expérience utilisateur enrichissante.</p>
+    </header>
+
+    <section class="article-content">
+      <h2>Introduction</h2>
+      <p>Les lunettes Ray-Ban Meta ont été lancées le 17 octobre 2023. Elles sont équipées de spécifications techniques avancées pour offrir une expérience utilisateur enrichissante.</p>
+
+      <h2>Spécifications Techniques</h2>
+      <p>Les lunettes Ray-Ban Meta sont équipées d'un processeur Qualcomm Snapdragon AR1 Gen 1, conçu pour supporter les applications de réalité augmentée et les tâches exigeantes en termes de traitement de l'information.</p>
+      <p>Elles disposent de 32 Go de stockage interne, ce qui permet de stocker des photos, des vidéos et d'autres données.</p>
+      <p>Les lunettes fonctionnent sur un système d'exploitation propriétaire développé par Meta, conçu pour intégrer les fonctionnalités de l'IA et de la réalité augmentée.</p>
+      <p>Elles sont équipées de l'algorithme d'IA Llama 3.2 développé par Meta, qui permet de traiter les informations visuelles et audio en temps réel.</p>
+
+      <h2>Fonctionnalités Avancées</h2>
+      <p>Les lunettes sont équipées d'un appareil photo de 12 mégapixels capable de prendre des photos et des vidéos en haute définition.</p>
+      <p>Elles disposent d'un système audio personnel qui permet de diffuser de la musique et des notifications directement dans les oreilles de l'utilisateur.</p>
+      <p>Les lunettes sont équipées de la connectivité Bluetooth et Wi-Fi, ce qui permet de les connecter à d'autres appareils et de télécharger des applications et des mises à jour.</p>
+
+      <h2>Conclusion</h2>
+      <p>Ces spécifications techniques font des lunettes Ray-Ban Meta un appareil innovant et puissant qui offre une expérience utilisateur unique et enrichissante.</p>
+    </section>
+
+    <div class="article-actions">
+      <a href="veille.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Retour à la veille
+      </a>
+      <button class="share-button">
+        <i class="fas fa-share"></i> Partager
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    loadTheme();
+
+    // Partage
+    document.querySelector('.share-button').addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Lunettes Ray-Ban Meta',
+          text: 'Les lunettes connectées Ray-Ban Meta sont équipées de spécifications techniques avancées pour offrir une expérience utilisateur enrichissante.',
+          url: window.location.href
+        }).then(() => {
+          console.log('Partage réussi');
+        }).catch((error) => {
+          console.error('Erreur de partage:', error);
+        });
+      } else {
+        alert('La fonctionnalité de partage n\'est pas supportée par votre navigateur.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titre de l'Article</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles_veille.css">
+  <style>
+    .article-container {
+      max-width: 1100px;
+      padding-top: 2rem;
+      margin: 0 auto;
+    }
+    .article-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(var(--card-bg-dark), 0.03);
+      border-radius: 16px;
+    }
+    .article-header h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .article-header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .article-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .article-content p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .article-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    .article-content blockquote {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text);
+    }
+    .article-content blockquote p {
+      margin: 0;
+    }
+    .article-actions {
+      display: flex;
+      justify-content: space-between;
+      margin: 4rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .back-link, .share-button {
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: all 0.3s ease;
+    }
+    .back-link:hover, .share-button:hover {
+      background: var(--accent);
+      color: var(--card-bg);
+    }
+    .table-of-contents {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .table-of-contents nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .table-of-contents a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 1rem;
+      transition: color 0.3s ease;
+    }
+    .table-of-contents a::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .table-of-contents a:hover {
+      color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2rem;
+      }
+      .article-header p {
+        font-size: 1rem;
+      }
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .table-of-contents {
+        position: static;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="veille.html" class="nav-link">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="main-content article-container">
+    <header class="article-header">
+      <h1>Titre de l'Article</h1>
+      <p>Introduction ou résumé de l'article.</p>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="table-of-contents">
+        <h3>Sommaire</h3>
+        <nav>
+          <a href="#introduction">Introduction</a>
+          <a href="#contenu-principal">Contenu Principal</a>
+          <a href="#conclusion">Conclusion</a>
+        </nav>
+      </div>
+
+      <div class="article-content">
+        <h2 id="introduction">Introduction</h2>
+        <p>Contenu de l'introduction.</p>
+
+        <h2 id="contenu-principal">Contenu Principal</h2>
+        <p>Contenu principal de l'article.</p>
+
+        <h2 id="conclusion">Conclusion</h2>
+        <p>Contenu de la conclusion.</p>
+      </div>
+    </div>
+
+    <div class="article-actions">
+      <a href="veille.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Retour à la veille
+      </a>
+      <button class="share-button">
+        <i class="fas fa-share"></i> Partager
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    loadTheme();
+
+    // Partage
+    document.querySelector('.share-button').addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Titre de l\'Article',
+          text: 'Introduction ou résumé de l\'article.',
+          url: window.location.href
+        }).then(() => {
+          console.log('Partage réussi');
+        }).catch((error) => {
+          console.error('Erreur de partage:', error);
+        });
+      } else {
+        alert('La fonctionnalité de partage n\'est pas supportée par votre navigateur.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qwen</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_veille.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
+  
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/portfolio/veille.html" class="nav-link">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="main-content article-container">
+    <header class="article-header">
+      <h1>Qwen</h1>
+      <p>Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.</p>
+    </header>
+
+    <section class="article-content">
+      <h2>Introduction</h2>
+      <p>Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.</p>
+
+      <h2>Performances Supérieures</h2>
+      <p>Qwen est la deuxième IA chinoise à faire parler d'elle et promet des performances encore au-dessus de celles de DeepSeek.</p>
+
+      <h2>Conclusion</h2>
+      <p>Qwen représente une avancée significative dans le domaine de l'IA, offrant des performances supérieures et promettant de nouvelles innovations.</p>
+    </section>
+
+    <div class="article-actions">
+      <a href="veille.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Retour à la veille
+      </a>
+      <button class="share-button">
+        <i class="fas fa-share"></i> Partager
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    loadTheme();
+
+    // Partage
+    document.querySelector('.share-button').addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Qwen',
+          text: 'Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.',
+          url: window.location.href
+        }).then(() => {
+          console.log('Partage réussi');
+        }).catch((error) => {
+          console.error('Erreur de partage:', error);
+        });
+      } else {
+        alert('La fonctionnalité de partage n\'est pas supportée par votre navigateur.');
+      }
+    });
+  </script>
+</body>
+</html>

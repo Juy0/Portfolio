@@ -6,12 +6,15 @@
   <title>Junior Michel - Veille Technologique</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles_veille.css">
+  <link rel="stylesheet" href="styles/styles_veille.css">
+  
 </head>
 <body>
+
   <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
     <i class="fas fa-moon"></i>
   </button>
+
   <!-- Navbar fixe -->
   <nav class="navbar">
     <div class="nav-container">
@@ -40,9 +43,72 @@
             <span class="category">IA Générative</span>
             <time datetime="2024-06-15">15 juin 2024</time>
           </div>
+
+          <img src="img/chatgptBlancLogo.png" class="logo light-theme" alt="Nouveaux modèles GPT-5">
+          <img src="img/chatgptLogo.png" class="logo dark-theme" alt="Nouveaux modèles GPT-5">
           <h3>Nouveaux modèles GPT-5</h3>
           <p>Analyse des capacités et limitations des derniers modèles de traitement du langage...</p>
-          <a href="#" class="article-link">Lire →</a>
+          <a href="articles/nv_model_GPT5.html" class="article-link">Lire →</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">Réalité Augmentée</span>
+            <time datetime="2023-10-17">17 octobre 2023</time>
+          </div>
+
+          <img src="img/metaLogo.png" width="16%" alt="Lunettes Ray-Ban Meta">
+          <h3>Lunettes Ray-Ban Meta</h3>
+          <p>Les lunettes connectées Ray-Ban Meta sont équipées de spécifications techniques avancées...</p>
+          <a href="articles/lunette_meta.html" class="article-link">Lire →</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">IA</span>
+            <time datetime="2024-01-20">20 janvier 2024</time>
+          </div>
+
+          <img src="img/deepseekLogo.png" width="16%" alt="DeepSeek">
+          <h3>DeepSeek</h3>
+          <p>DeepSeek se démarque en étant plus performant que ses concurrents à un prix plus faible...</p>
+          <a href="articles/deepseek.html" class="article-link">Lire →</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">IA</span>
+            <time datetime="2024-01-27">27 janvier 2024</time>
+          </div>
+
+          <img src="img/qwenLogo.png" width="21%" alt="Qwen">
+          <h3>Qwen</h3>
+          <p>Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures...</p>
+          <a href="articles/qwen.html" class="article-link">Lire →</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">IA</span>
+            <time datetime="2024-02-06">6 février 2024</time>
+          </div>
+
+          <img src="img/geminiLogo.webp" width="20%" alt="Gemini 2.0">
+          <h3>Gemini 2.0</h3>
+          <p>Gemini 2.0 introduit le "thinking mode" et peut interagir avec YouTube, Google et Maps...</p>
+          <a href="articles/Gemini2_0.html" class="article-link">Lire →</a>
+        </article>
+
+        <article class="article-card">
+          <div class="article-meta">
+            <span class="category">IA</span>
+            <time datetime="2025-02-06">6 février 2025</time>
+          </div>
+
+          <img src="img/mistralLogo.webp" width="20%" alt="Mistral">
+          <h3>Mistral</h3>
+          <p>L'application mobile Mistral a été lancée le 6 février 2025, développée par l'IA française...</p>
+          <a href="articles/mistral.html" class="article-link">Lire →</a>
         </article>
       </div>
     </section>
@@ -50,7 +116,12 @@
     <!-- Section Ressources -->
     <section id="ressources">
       <h2>Ressources</h2>
-      <p>Section à compléter avec des ressources, liens et outils en rapport avec la veille technologique.</p>
+      <p>The Verge</p>
+      <p>Google Actualité</p>
+      <p>X / Twitter</p>
+      <p>Numerama</p>
+      <p>Frandroid</p>
+      <p>Youtube</p>
     </section>
   </main>
 
@@ -62,7 +133,7 @@
           <i class="fab fa-github"></i>
         </a>
         <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="far fa-envelope"></i></a>
+        <!-- <a href="#"><i class="far fa-envelope"></i></a> -->
       </div>
       <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
     </div>
@@ -126,8 +197,6 @@
         });
       });
     });
-
-</script>
-  
+  </script>
 </body>
 </html>

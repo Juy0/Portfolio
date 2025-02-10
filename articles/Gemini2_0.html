@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini 2.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_veille.css">
+  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
+
+  
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/portfolio/veille.html" class="nav-link">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="main-content article-container">
+    <header class="article-header">
+      <h1>Gemini 2.0</h1>
+      <p>Gemini 2.0 introduit le "thinking mode" et peut interagir avec YouTube, Google et Maps.</p>
+    </header>
+
+    <section class="article-content">
+      <h2>Introduction</h2>
+      <p>Gemini 2.0 a été lancé en 2024. Il introduit le "thinking mode" et peut interagir avec YouTube, Google et Maps.</p>
+
+      <h2>Fonctionnalités Avancées</h2>
+      <p>Gemini 2.0 prend en charge de nombreuses modalités d'entrée (texte, image, vidéo et audio) avec une fenêtre de contexte d'entrée de 1 million de jetons et peut désormais générer des sorties multimodales, notamment la synthèse vocale native avec 8 voix de haute qualité dans plusieurs langues, la génération d'images native avec des capacités d'édition conversationnelle, et une limite de sortie de 8 000 jetons.</p>
+
+      <h2>Sécurité</h2>
+      <p>Les fonctionnalités de sécurité incluent les filigranes invisibles SynthID pour toutes les sorties image et audio générées afin de lutter contre la désinformation.</p>
+
+      <h2>Conclusion</h2>
+      <p>Gemini 2.0 représente une étape importante dans l'évolution de l'IA, offrant des fonctionnalités avancées et une sécurité renforcée.</p>
+    </section>
+
+    <div class="article-actions">
+      <a href="veille.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Retour à la veille
+      </a>
+      <button class="share-button">
+        <i class="fas fa-share"></i> Partager
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    loadTheme();
+
+    // Partage
+    document.querySelector('.share-button').addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Gemini 2.0',
+          text: 'Gemini 2.0 introduit le "thinking mode" et peut interagir avec YouTube, Google et Maps.',
+          url: window.location.href
+        }).then(() => {
+          console.log('Partage réussi');
+        }).catch((error) => {
+          console.error('Erreur de partage:', error);
+        });
+      } else {
+        alert('La fonctionnalité de partage n\'est pas supportée par votre navigateur.');
+      }
+    });
+  </script>
+</body>
+</html>

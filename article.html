@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Michel - Article sur l'IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/styles_veille.css">
+  <link rel="stylesheet" href="styles/styles_articles.css">
+  
+</head>
+<body>
+  <button class="theme-toggle" aria-label="Basculer entre le mode clair et sombre" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+  <!-- Navbar fixe -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="veille.html" class="nav-link">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="main-content article-container">
+    <article class="article-main">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">IA Générative</span>
+          <time datetime="2024-06-15">15 juin 2024</time>
+        </div>
+        <h1>Nouveaux modèles GPT-5 : Révolution ou évolution?</h1>
+        <div class="hero-image">
+          <img src="/img/chatgptLogo.png" alt="Représentation abstraite d'intelligence artificielle">
+          <div class="image-gradient"></div>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <div class="content-wrapper">
+          <div class="table-of-contents">
+            <h3>Sommaire</h3>
+            <nav>
+              <a href="#introduction">Introduction</a>
+              <a href="#capacites">Capacités des modèles GPT-5</a>
+              <a href="#limitations">Limitations et défis</a>
+              <a href="#conclusion">Conclusion</a>
+            </nav>
+          </div>
+
+          <div class="article-content">
+            <section id="introduction">
+              <h2><span class="gradient-text">Introduction</span></h2>
+              <p>Les modèles GPT-5 représentent une avancée significative dans le domaine de l'intelligence artificielle. Ils offrent des capacités de traitement du langage naturel jamais vues auparavant, ouvrant la voie à de nouvelles applications pratiques dans le développement web moderne.</p>
+            </section>
+
+            <section id="capacites">
+              <h2>Capacités des modèles <span class="gradient-text">GPT-5</span></h2>
+              <p>Les modèles GPT-5 sont capables de comprendre et de générer du texte de manière plus précise et contextuelle que leurs prédécesseurs. Ils peuvent être utilisés pour des tâches variées, allant de la génération de contenu à l'analyse de sentiments.</p>
+              <div class="feature-card">
+                <div class="circuit-line"></div>
+                <h3>Compréhension contextuelle</h3>
+                <p>Capacité à maintenir un contexte sur 128k tokens...</p>
+              </div>
+            </section>
+
+            <section id="limitations">
+              <h2>Limitations et <span class="gradient-text">défis</span></h2>
+              <p>Malgré leurs capacités impressionnantes, les modèles GPT-5 ne sont pas exempts de limitations. Ils peuvent parfois générer des réponses incorrectes ou biaisées, et leur utilisation nécessite une vigilance constante pour éviter les dérives éthiques.</p>
+              <blockquote>
+                <p>"L'intelligence artificielle est une technologie puissante, mais elle doit être utilisée avec responsabilité."</p>
+              </blockquote>
+            </section>
+
+            <section id="conclusion">
+              <h2><span class="gradient-text">Conclusion</span></h2>
+              <p>En conclusion, les modèles GPT-5 représentent une étape importante dans l'évolution de l'IA. Leur potentiel est immense, mais il est crucial de les utiliser de manière éthique et responsable.</p>
+            </section>
+
+            <div class="article-actions">
+              <a href="veille.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à la veille
+              </a>
+              <button class="share-button">
+                <i class="fas fa-share"></i> Partager
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="far fa-envelope"></i></a>
+      </div>
+      <p style="color: var(--accent); margin-top: 1rem;">&copy; 2025 Junior Michel. Tous droits réservés.</p>
+    </div>
+  </footer>
+  <script>
+    // Gestion du thème
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    loadTheme();
+
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.article-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Partage
+    document.querySelector('.share-button').addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Nouveaux modèles GPT-5 : Révolution ou évolution?',
+          text: 'Découvrez les dernières avancées en intelligence artificielle!',
+          url: window.location.href
+        }).then(() => {
+          console.log('Partage réussi');
+        }).catch((error) => {
+          console.error('Erreur de partage:', error);
+        });
+      } else {
+        alert('La fonctionnalité de partage n\'est pas supportée par votre navigateur.');
+      }
+    });
+  </script>
+</body>
+</html>
