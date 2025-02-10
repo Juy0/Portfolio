@@ -17,7 +17,7 @@
     <a href="#accueil">Accueil</a>
     <a href="#competences">Compétences</a>
     <a href="#projets">Projets</a>
-    <a href="#veille">Veille Technologique
+    <a href="#veille">Veille
     </a>
     <a href="#contact">Contact</a>
   </nav>
@@ -107,18 +107,20 @@
     <h2>Contactez-moi</h2>
     <p>Si vous souhaitez simplement échanger ou poser une question, n'hésitez pas à m'envoyer un message. Je vous répondrai avec plaisir.</p>
     <div class="contact-form">
-      <form action="contact.php" method="POST" id="contactForm">
+      <form id="myForm" action="https://formspree.io/f/xrbelnwk" method="POST">
         <div class="form-group">
-            <input type="text" name="name" class="form-input" placeholder="Nom complet" required>
+          <input type="text" name="name" class="form-input" placeholder="Nom complet" required>
         </div>
         <div class="form-group">
-            <input type="email" name="email" class="form-input" placeholder="Adresse email" required>
+          <input type="email" name="_replyto" class="form-input" placeholder="Adresse email" required>
         </div>
         <div class="form-group">
-            <textarea name="message" class="form-input" rows="4" placeholder="Votre message" required></textarea>
+          <textarea class="form-input" name="message" rows="4" placeholder="Votre message" required></textarea>
         </div>
+        <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
         <button type="submit" class="submit-btn">Envoyer le message</button>
-    </form>
+      </form>
+      <div id="form-status" class="form-status"></div>
     </div>
   </section>
 
@@ -178,6 +180,45 @@
           behavior: 'smooth'
         });
       });
+    });
+
+
+    // Mail 
+    const form = document.getElementById('myForm');
+    const formStatus = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          formStatus.textContent = 'Message envoyé avec succès !';
+          formStatus.classList.add('success');
+          setTimeout(() => formStatus.classList.remove('success'), 3000);
+        } else {
+          throw new Error('Erreur lors de l\'envoi');
+        }
+      } catch (error) {
+        formStatus.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+        formStatus.classList.add('error');
+        setTimeout(() => formStatus.classList.remove('error'), 3000);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer le message';
+      }
     });
   </script>
 </body>

@@ -1,18 +1,31 @@
+/* ======================= */
+/*      Variables          */
+/* ======================= */
 :root {
-    /* Light Theme amélioré */
-    --bg: #FAF9F7;                   /* Fond très clair et chaleureux */
-    --text: #333333;                 /* Texte bien contrasté */
-    --accent: #B89F7B;               /* Accent élégant */
-    --card-bg: rgba(255, 255, 255, 0.95); /* Fond des cartes légèrement translucide */
-    --border: rgba(200, 200, 200, 0.3); /* Bordures subtiles */
+    /* Light Theme révisé */
+    --bg: #f8f5f2;                   /* Fond plus chaud */
+    --text: #2a2a2a;                 /* Texte plus contrasté */
+    --accent: #9c7c5e;               /* Accent plus profond */
+    --secondary: #4a6fa5;            /* Nouvelle couleur secondaire */
+    --card-bg: rgba(255, 255, 255, 0.98); /* Fond plus opaque */
+    --border: rgba(156, 124, 94, 0.15); /* Bordures accent */
+    
     --text-muted: rgba(51, 51, 51, 0.7);  /* Texte atténué */
+
+    /* Nouveaux dégradés basés sur vos couleurs */
+    --accent-light: #d4b999; /* +20% luminosité */
+    --accent-dark: #9c7c5e;  /* -20% luminosité */
+    --bg-gradient-light: linear-gradient(145deg, #FAF9F7 0%, #f3f0eb 100%);
+    --bg-gradient-dark: linear-gradient(145deg, #1C1C1C 0%, #242424 100%);
     
     /* Dark Theme */
-    --bg-dark: #1C1C1C;
-    --text-dark: #F5F5F5;
-    --accent-dark: #F0A500;
-    --card-bg-dark: rgba(28, 28, 28, 0.95);
-    --border-dark: rgba(240, 165, 0, 0.2);
+    --bg-dark: #121212;
+    --text-dark: #f0f0f0;
+    --accent-dark: #ffb300;          /* Or plus vibrant */
+    --secondary-dark: #26a69a;       /* Teal pour contraste */
+    --card-bg-dark: rgba(30, 30, 30, 0.98);
+    --border-dark: rgba(255, 179, 0, 0.15);
+
     --text-muted-dark: rgba(245, 245, 245, 0.7);
   }
 
@@ -23,6 +36,9 @@
     --card-bg: var(--card-bg-dark);
     --border: var(--border-dark);
     --text-muted: var(--text-muted-dark);
+
+    --accent-light: #ffb733; /* Variation claire pour le dark mode */
+  --accent-dark: #c68500;  /* Variation foncée pour le dark mode */
   }
 
   * {
@@ -66,6 +82,12 @@
 
   /* Navigation */
   .nav-glass {
+    background: linear-gradient(
+      135deg, 
+      rgba(255, 255, 255, 0.95) 0%, 
+      rgba(245, 243, 240, 0.95) 100%
+    );
+    
     position: fixed;
     top: 1.5rem;
     left: 50%;
@@ -76,10 +98,19 @@
     border-radius: 50px;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(var(--accent-rgb), 0.1);
     display: flex;
     gap: 1.5rem;
+
   }
+
+  [data-theme="dark"] .nav-glass {
+  background: linear-gradient(
+    135deg, 
+    rgba(40, 40, 40, 0.95) 0%, 
+    rgba(30, 30, 30, 0.95) 100%
+  );
+}
 
   .nav-glass a {
     color: var(--text);
@@ -146,6 +177,12 @@
   }
 
   .hero-subtitle {
+
+    background: linear-gradient(45deg, var(--accent), var(--accent-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
     font-size: 1.1rem;
     color: var(--accent);
     max-width: 600px;
@@ -217,7 +254,13 @@
 
   .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 5px 5px 15px rgba(var(--accent-rgb), 0.08),
+    -5px -5px 15px rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="dark"] .project-card:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3),
+               -5px -5px 15px rgba(255, 255, 255, 0.05);
   }
 
   .project-header {
@@ -262,7 +305,11 @@
   }
 
   .project-tag {
-    background: rgba(184, 159, 123, 0.1);
+    background: linear-gradient(
+    to right,
+    rgba(var(--accent-rgb), 0.1),
+    rgba(var(--accent-rgb), 0.05)
+  );
     color: var(--accent);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
@@ -277,7 +324,8 @@
     inset: 0;
     border-radius: 16px;
     padding: 1px;
-    background: linear-gradient(45deg, transparent, var(--accent), transparent);
+    background: linear-gradient(45deg, transparent, var(--accent), var(--accent-light), transparent);
+    animation: gradientFlow 8s linear infinite;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -288,6 +336,12 @@
 
   /* Section Contact améliorée avec effet de blur supplémentaire */
   .contact-section {
+    background: linear-gradient(
+    145deg,
+    rgba(var(--accent-rgb), 0.03),
+    rgba(255, 255, 255, 0.1)
+  );
+
     position: relative; /* Nécessaire pour le pseudo-élément */
     padding: 4rem 5%;
     max-width: 800px;
@@ -296,6 +350,14 @@
     border-radius: 12px;
     backdrop-filter: blur(8px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="dark"] .contact-section {
+    background: linear-gradient(
+      145deg,
+      rgba(var(--accent-rgb), 0.05),
+      rgba(0, 0, 0, 0.1)
+    );
   }
   
   /* Fond et bordure adaptés au mode clair */
@@ -326,6 +388,12 @@
     animation: gradientAnimation 10s ease infinite;
   }
   
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -372,18 +440,18 @@
   }
 
   .submit-btn {
-    background: var(--text);
     color: var(--bg);
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   .submit-btn:hover {
     background: var(--accent);
     transform: translateY(-2px);
+    filter: brightness(1.1);
   }
 
   /* Footer */
@@ -562,12 +630,7 @@ section + section::before {
   );
 }
 
-/* Titres de section améliorés */
-/* Titres de section avec effet de soulignement */
-/* Nouveau style pour les titres de section */
-/* Titres de section améliorés */
-/* Style de base */
-/* Style de base */
+
 /* Titres de section centrés */
 .section-title {
   font-family: 'EB Garamond', serif;
@@ -604,4 +667,27 @@ section + section::before {
     padding: 0 1rem;
     margin: 4rem auto 3rem; /* Ajustement mobile */
   }
+}
+
+
+
+.form-status {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+}
+
+.form-status.error {
+  display: block;
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
 }
