@@ -6,9 +6,8 @@
   <title>Mistral</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href=/portfolio/styles/styles_veille.css">
-  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
-
+  <link rel="stylesheet" href="/styles/styles_veille.css">
+  <link rel="stylesheet" href="/styles/styles_articles.css">
   
 </head>
 <body>
@@ -24,30 +23,67 @@
 
   <!-- Contenu principal -->
   <main class="main-content article-container">
-    <header class="article-header">
-      <h1>Mistral</h1>
-      <p>L'application mobile Mistral a été lancée le 6 février 2025, développée par l'IA française.</p>
-    </header>
+    <article class="article-main">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">IA</span>
+          <time datetime="2025-02-06">6 février 2025</time>
+        </div>
+        <h1>Mistral : L'IA Française qui Réinvente le Paysage Technologique</h1>
+        <div class="hero-image">
+          <img src="/img/mistralLogo.webp" alt="Logo Mistral">
+          <div class="image-gradient"></div>
+        </div>
+      </header>
 
-    <section class="article-content">
-      <h2>Introduction</h2>
-      <p>L'application mobile Mistral a été lancée le 6 février 2025. Elle est développée par l'IA française et est valorisée à 6 milliards d'euros.</p>
+      <div class="article-body">
+        <div class="content-wrapper">
+          <div class="table-of-contents">
+            <h3>Sommaire</h3>
+            <nav>
+              <a href="#introduction">Introduction</a>
+              <a href="#capacites">Une Innovation Française</a>
+              <a href="#performance">Partenariats Stratégiques</a>
+              <a href="#conclusion">Concurrence et Perspectives</a>
+            </nav>
+          </div>
 
-      <h2>Concurrent Direct</h2>
-      <p>Mistral est un concurrent direct de ChatGPT, Gemini et autres.</p>
+          <div class="article-content">
+            <section id="introduction">
+              <h2><span class="gradient-text">Introduction</span></h2>
+              <p>Le 6 février 2025, l'application mobile Mistral a été lancée, marquant une étape significative pour l'intelligence artificielle en France. Sous la direction de son CEO, Arthur Mensch, Mistral se positionne comme un concurrent direct de ChatGPT, Gemini et autres géants de l'IA, avec une valorisation impressionnante de 6 milliards d'euros.</p>
+            </section>
 
-      <h2>Conclusion</h2>
-      <p>Mistral représente une avancée significative dans le domaine de l'IA, offrant une alternative française de qualité.</p>
-    </section>
+            <section id="capacites">
+              <h2>Une Innovation <span class="gradient-text">Française</span></h2>
+              <p>Mistral incarne l'excellence technologique française, offrant une alternative puissante aux solutions d'IA internationales. Avec Arthur Mensch à sa tête, l'entreprise se distingue par son approche innovante et sa capacité à rivaliser avec les leaders mondiaux du secteur. La valorisation de 6 milliards d'euros témoigne de la confiance des investisseurs dans le potentiel de Mistral à transformer le marché de l'IA.</p>
+            </section>
 
-    <div class="article-actions">
-      <a href="veille.html" class="back-link">
-        <i class="fas fa-arrow-left"></i> Retour à la veille
-      </a>
-      <button class="share-button">
-        <i class="fas fa-share"></i> Partager
-      </button>
-    </div>
+            <section id="performance">
+              <h2>Partenariats <span class="gradient-text">Stratégiques</span></h2>
+              <p>Mistral a rapidement noué des partenariats stratégiques pour renforcer sa position sur le marché. Le 10 février 2025, Mistral et Helsing ont annoncé une collaboration dans le domaine de l'IA de défense, visant à développer des solutions avancées pour la sécurité nationale. Ce partenariat souligne l'engagement de Mistral à appliquer ses technologies à des enjeux critiques.</p>            
+                <p>De plus, Mistral a également établi un partenariat avec Orange, comme annoncé sur les réseaux sociaux. Cette collaboration vise à intégrer les capacités d'IA de Mistral dans les services d'Orange, offrant ainsi des solutions innovantes aux utilisateurs finaux.</p>
+              
+            </section>
+
+            <section id="conclusion">
+              <h2>Concurrence et <span class="gradient-text">Perspectives</span></h2>
+              <p>En se positionnant comme un concurrent direct de ChatGPT et Gemini, Mistral promet d'apporter une nouvelle dynamique au marché de l'IA. Avec ses partenariats stratégiques et son approche centrée sur l'innovation, Mistral est bien placé pour devenir un acteur incontournable dans le paysage technologique mondial.</p>
+              
+            </section>
+
+            <div class="article-actions">
+              <a href="/portfolio/veille.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à la veille
+              </a>
+              <button class="share-button">
+                <i class="fas fa-share"></i> Partager
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
   </main>
 
   <!-- Footer -->
@@ -89,12 +125,46 @@
 
     loadTheme();
 
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.article-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
     // Partage
     document.querySelector('.share-button').addEventListener('click', function () {
       if (navigator.share) {
         navigator.share({
-          title: 'Mistral',
-          text: 'L\'application mobile Mistral a été lancée le 6 février 2025, développée par l\'IA française.',
+          title: 'Nouveaux modèles GPT-5 : Révolution ou évolution?',
+          text: 'Découvrez les dernières avancées en intelligence artificielle!',
           url: window.location.href
         }).then(() => {
           console.log('Partage réussi');

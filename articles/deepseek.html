@@ -6,8 +6,8 @@
   <title>DeepSeek</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="/portfolio/styles/styles_veille.css">
-  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
+  <link rel="stylesheet" href="/styles/styles_veille.css">
+  <link rel="stylesheet" href="/styles/styles_articles.css">
   
 </head>
 <body>
@@ -23,31 +23,64 @@
 
   <!-- Contenu principal -->
   <main class="main-content article-container">
-    <header class="article-header">
-      <h1>DeepSeek</h1>
-      <p>DeepSeek se démarque en étant plus performant que ses concurrents à un prix plus faible.</p>
-    </header>
+    <article class="article-main">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">DeepSeek R1</span>
+          <time datetime="2025-01-20">20 janvier 2025</time>
+        </div>
+        <h1>La réponse chinoise à ChatGPT</h1>
+        <div class="hero-image">
+          <img src="/img/deepseekLogo.png" alt="DeepSeek">
+          <div class="image-gradient"></div>
+        </div>
+      </header>
 
-    <section class="article-content">
-      <h2>Introduction</h2>
-      <p>DeepSeek a été lancé le 20 janvier 2024. Ce modèle se démarque en étant plus performant que ses concurrents à un prix plus faible.</p>
+      <div class="article-body">
+        <div class="content-wrapper">
+          <div class="table-of-contents">
+            <h3>Sommaire</h3>
+            <nav>
+              <a href="#introduction">Introduction</a>
+              <a href="#performance">Popularité et Performance</a>
+              <a href="#conclusion">Contexte Européen et Rivalité Internationale</a>
+            </nav>
+          </div>
 
-      <h2>Performance et Coût</h2>
-      <p>DeepSeek a été créé en seulement deux mois pour 10 millions de dollars avec du matériel obsolète par rapport à ce que utilisent ses concurrents pour leurs propres modèles, ce qui montre leur expertise dans le domaine.</p>
-      <p>Ils auraient environ 50,000 Nvidia H100s, ce qui est impressionnant pour un modèle aussi performant.</p>
+          <div class="article-content">
+            <section id="introduction">
+              <h2><span class="gradient-text">Introduction</span></h2>
+              <p>Le 20 janvier 2025, DeepSeek a fait une entrée remarquée dans le monde de l'intelligence artificielle (IA). Développé en seulement deux mois avec un budget de 10 millions de dollars, ce modèle a rapidement captivé l'attention grâce à ses performances impressionnantes et son approche open source. DeepSeek a été créé avec du matériel considéré comme obsolète par rapport à celui utilisé par ses concurrents, démontrant ainsi l'expertise et l'efficacité de son équipe de développement.</p>
+            </section>
 
-      <h2>Conclusion</h2>
-      <p>DeepSeek est une avancée significative dans le domaine de l'IA, offrant des performances supérieures à un coût réduit.</p>
-    </section>
+            <section id="performance">
+              <h2>Popularité et <span class="gradient-text">Performance</span></h2>
+              <p>DeepSeek s'est rapidement imposé comme un acteur majeur, devenant l'application la plus téléchargée sur l'App Store dès le 27 janvier 2025. Ce succès fulgurant s'explique par sa capacité à offrir des performances comparables, voire supérieures, à celles de ses concurrents, mais à un coût plus faible. Cette combinaison de performance et d'accessibilité fait de DeepSeek un choix attrayant pour les utilisateurs et les développeurs.</p>
+              
+              <div class="feature-card">
+                <div class="circuit-line"></div>
+                <h3>Infrastructure et Ressources</h3>
+                <p>L'infrastructure de DeepSeek est tout aussi impressionnante, avec environ 50 000 Nvidia H100s, permettant des calculs complexes et un traitement efficace des données. Cette puissance de calcul, associée à une approche innovante comme la technique de "chaîne de pensée", permet à DeepSeek de raisonner de manière plus humaine et intuitive, résolvant ainsi des problèmes complexes avec une grande précision.</p>              
+              </div>
+            </section>
 
-    <div class="article-actions">
-      <a href="veille.html" class="back-link">
-        <i class="fas fa-arrow-left"></i> Retour à la veille
-      </a>
-      <button class="share-button">
-        <i class="fas fa-share"></i> Partager
-      </button>
-    </div>
+            <section id="conclusion">
+              <h2>Contexte Européen et <span class="gradient-text">Rivalité Internationale</span></h2>
+              <p>L'émergence de DeepSeek a suscité de nombreuses discussions, notamment en Europe. Bien que souvent perçue comme un observateur, l'Europe joue un rôle crucial dans la régulation des technologies et commence à développer ses propres structures en IA, comme Hugging Face. L'arrivée de DeepSeek marque le début d'une nouvelle ère de compétition internationale, où la rivalité ne se limite plus aux modèles d'un même pays, mais s'étend à une compétition mondiale pour déterminer quel pays est le plus avancé technologiquement.</p>
+            </section>
+
+            <div class="article-actions">
+              <a href="/portfolio/veille.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à la veille
+              </a>
+              <button class="share-button">
+                <i class="fas fa-share"></i> Partager
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
   </main>
 
   <!-- Footer -->
@@ -89,12 +122,46 @@
 
     loadTheme();
 
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.article-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
     // Partage
     document.querySelector('.share-button').addEventListener('click', function () {
       if (navigator.share) {
         navigator.share({
-          title: 'DeepSeek',
-          text: 'DeepSeek se démarque en étant plus performant que ses concurrents à un prix plus faible.',
+          title: 'Nouveaux modèles GPT-5 : Révolution ou évolution?',
+          text: 'Découvrez les dernières avancées en intelligence artificielle!',
           url: window.location.href
         }).then(() => {
           console.log('Partage réussi');

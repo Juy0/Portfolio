@@ -6,8 +6,8 @@
   <title>Qwen</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="/portfolio/styles/styles_veille.css">
-  <link rel="stylesheet" href="/portfolio/styles/styles_model_articles.css">
+  <link rel="stylesheet" href="/styles/styles_veille.css">
+  <link rel="stylesheet" href="/styles/styles_articles.css">
   
 </head>
 <body>
@@ -23,30 +23,66 @@
 
   <!-- Contenu principal -->
   <main class="main-content article-container">
-    <header class="article-header">
-      <h1>Qwen</h1>
-      <p>Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.</p>
-    </header>
+    <article class="article-main">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">IA</span>
+          <time datetime="2025-01-29">29 janvier 2025</time>
+        </div>
+        <h1>L'IA d'Alibaba</h1>
+        <div class="hero-image">
+          <img src="/img/qwenLogo.png" alt="Logo Qwen">
+          <div class="image-gradient"></div>
+        </div>
+      </header>
 
-    <section class="article-content">
-      <h2>Introduction</h2>
-      <p>Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.</p>
+      <div class="article-body">
+        <div class="content-wrapper">
+          <div class="table-of-contents">
+            <h3>Sommaire</h3>
+            <nav>
+              <a href="#introduction">Introduction</a>
+              <a href="#capacites">Processeur et Mémoire</a>
+              <a href="#conclusion">Une Expérience Utilisateur Unique
+              </a>
+            </nav>
+          </div>
 
-      <h2>Performances Supérieures</h2>
-      <p>Qwen est la deuxième IA chinoise à faire parler d'elle et promet des performances encore au-dessus de celles de DeepSeek.</p>
+          <div class="article-content">
+            <section id="introduction">
+              <h2><span class="gradient-text">Introduction</span></h2>
+              <p>Après DeepSeek, Qwen la nouvelle intelligence artificielle développée par le groupe Alibaba, fait sensation dans le monde de la technologie. En tant que deuxième IA chinoise à attirer l'attention internationale, Qwen promet des performances qui surpassent même celles de DeepSeek, établissant ainsi de nouveaux standards dans le domaine.</p>
+            </section>
 
-      <h2>Conclusion</h2>
-      <p>Qwen représente une avancée significative dans le domaine de l'IA, offrant des performances supérieures et promettant de nouvelles innovations.</p>
-    </section>
+            <section id="capacites">
+              <h2>Une Innovation <span class="gradient-text">Chinoise</span></h2>
+              <p>Qwen marque une étape importante pour l'industrie technologique chinoise, démontrant la capacité du pays à innover et à rivaliser sur la scène mondiale. Après le succès de la première IA chinoise, Qwen se distingue par ses avancées technologiques et ses promesses de performances supérieures, attirant l'attention des experts et des utilisateurs du monde entier.</p>
+              <div class="feature-card">
+                <div class="circuit-line"></div>
+                <h3>Des Performances Supérieures</h3>
+                <p>Ce qui distingue particulièrement Qwen, c'est sa promesse de surpasser les capacités de DeepSeek, une IA déjà reconnue pour ses performances impressionnantes. Cette avancée témoigne de l'expertise et de l'innovation continues d'Alibaba dans le domaine de l'intelligence artificielle, ouvrant la voie à de nouvelles applications et possibilités.</p>
+              </div>
+            </section>
 
-    <div class="article-actions">
-      <a href="veille.html" class="back-link">
-        <i class="fas fa-arrow-left"></i> Retour à la veille
-      </a>
-      <button class="share-button">
-        <i class="fas fa-share"></i> Partager
-      </button>
-    </div>
+            <section id="conclusion">
+              <h2>Impact et  <span class="gradient-text">Attentes</span></h2>
+              <p>L'arrivée de Qwen suscite de grandes attentes, tant au niveau des performances techniques que des applications pratiques. En promettant des capacités supérieures à celles de ses prédécesseurs, Qwen pourrait redéfinir les standards de l'IA et influencer divers secteurs, de la recherche académique à l'industrie technologique.</p>
+              
+            </section>
+
+
+            <div class="article-actions">
+              <a href="/portfolio/veille.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à la veille
+              </a>
+              <button class="share-button">
+                <i class="fas fa-share"></i> Partager
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
   </main>
 
   <!-- Footer -->
@@ -88,12 +124,46 @@
 
     loadTheme();
 
+    // Animations au scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.article-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.4s ease-out';
+      observer.observe(el);
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
     // Partage
     document.querySelector('.share-button').addEventListener('click', function () {
       if (navigator.share) {
         navigator.share({
-          title: 'Qwen',
-          text: 'Qwen est une nouvelle IA développée par Alibaba, promettant des performances supérieures.',
+          title: 'Nouveaux modèles GPT-5 : Révolution ou évolution?',
+          text: 'Découvrez les dernières avancées en intelligence artificielle!',
           url: window.location.href
         }).then(() => {
           console.log('Partage réussi');
