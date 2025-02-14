@@ -188,10 +188,22 @@
     border: 1px solid var(--border);
     background: var(--card-bg);
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
   }
   .back-link:hover, .share-button:hover {
     background: var(--accent);
     color: var(--card-bg);
+  }
+
+  [data-theme="dark"] .back-link {
+    background: var(--card-bg-dark);
+    color: var(--text-dark);
+  }
+
+  [data-theme="dark"] .back-link:hover {
+    background: var(--accent-dark);
+    color: var(--card-bg-dark);
   }
   @media (max-width: 768px) {
     .content-wrapper {
