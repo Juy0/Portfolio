@@ -16,6 +16,7 @@
   <nav class="nav-glass">
     <a href="#accueil">Accueil</a>
     <a href="#competences">Compétences</a>
+    <a href="#diplomes">Diplômes</a>
     <a href="#projets">Projets</a>
     <a href="#rapport">Rapport</a>
     <a href="#veille">Veille</a>
@@ -26,7 +27,15 @@
   <section class="hero" id="accueil">
     <h1 class="hero-title">Junior Michel</h1>
     <p class="hero-subtitle">Étudiant BTS SIO</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3 class="skill-title"></i> Presentation</h3>
+        <p>Actuellement en BTS SIO, je me forme au développement web et applicatif, en explorant des technologies comme PHP (Laravel) et Java. 
+          Curieux et motivé, j’aime apprendre de nouvelles compétences et relever des défis techniques. 
+          Mon objectif est de consolider mes connaissances tout en acquérant de l’expérience à travers mes projets et mes stages.</p>
+      </div>
   </section>
+
 
   <section id="competences">
     <h2 class="section-title">Compétences</h2>
@@ -36,7 +45,6 @@
         <h3 class="skill-title"><i class="fas fa-code"></i> Frontend</h3>
         <ul class="skill-items">
           <li class="skill-item">HTML5 / CSS</li>
-          
           <li class="skill-item">Design Responsive</li>
         </ul>
       </div>
@@ -52,11 +60,36 @@
         <h3 class="skill-title"><i class="fas fa-tools"></i> Outils</h3>
         <ul class="skill-items">
           <li class="skill-item">Git / GitHub</li>
-          <li class="skill-item">Formspree</li> 
-          
+          <li class="skill-item">Formspree</li>
         </ul>
       </div>
     </div>
+  </section>
+
+
+  
+
+  <section id="diplomes">
+    <h2 class="section-title">Diplômes</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-number">Bac Technologique STI2D</span>
+        
+      </div>
+      
+      
+      <p class="project-description">Obtenu en 2023 au Lycée Gambetta-Carnot, Arras.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-number">BTS SIO</span>
+        
+      </div>
+      
+      <p class="project-description">En cours a la haute école d'Arras. Diplôme prévu pour 2025.</p>
+    </div>
+  </div>
   </section>
 
   <section id="projets">
@@ -89,9 +122,6 @@
     </div>
   </section>
 
-
-
-
   <section id="rapport">
     <h2 class="section-title">Rapport</h2>
 
@@ -103,20 +133,16 @@
         </div>
         <h3 class="project-title">Assistance à la vente / Mise en rayon d'articles.</h3>
         <p class="project-description">Réparation d'ordinateur d'éfféctueux et mise a niveau vers windows 10.</p>
-        
       </div>
       <div class="project-card">
         <div class="project-header">
           <span class="project-number">M@N Artois</span>
           <span class="veille-date">27/05 → 05/07/2024</span>
-
         </div>
         <h3 class="project-title">Formation sur le numérique</h3>
         <p class="project-description">Création d'un siège social virtuel avec Gather</p>
         <a href="m@n.pdf" class="veille-link">Lire le rapport →</a>
       </div>
-
-
       <div class="project-card">
         <div class="project-header">
           <span class="project-number">NetEase</span>
@@ -128,7 +154,6 @@
       </div>
     </div>
   </section>
-
 
   <section id="veille">
     <h2 class="section-title">Veille Technologique</h2>
@@ -206,7 +231,7 @@
       });
     });
 
-    document.querySelectorAll('.skill-card, .project-card').forEach((el) => {
+    document.querySelectorAll('.skill-card, .project-card, .diplome-card').forEach((el) => {
       el.style.opacity = 0;
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'all 0.4s ease-out';
@@ -218,17 +243,14 @@
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
 
-
       const targetId = this.getAttribute('href').substring(1); // Obtient l'ID de la cible
       const targetElement = document.getElementById(targetId);
-
 
       if (targetElement) {
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
         let startTime = null;
-
 
         function animation(currentTime) {
           if (startTime === null) startTime = currentTime;
@@ -238,7 +260,6 @@
           if (timeElapsed < 850) requestAnimationFrame(animation);
         }
 
-
         function ease(t, b, c, d) {
           t /= d / 2;
           if (t < 1) return c / 2 * t * t + b;
@@ -246,21 +267,18 @@
           return -c / 2 * (t * (t - 2) - 1) + b;
         }
 
-
         requestAnimationFrame(animation);
       }
     });
   });
 
-
-
-    // Mail 
+    // Mail
     const form = document.getElementById('myForm');
     const formStatus = document.getElementById('form-status');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Envoi en cours...';
