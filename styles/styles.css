@@ -656,8 +656,11 @@ section + section::before {
   transition: width 0.4s ease;
 }
 
-.section-title:hover::after {
-  width: 100%;
+.form-status.error {
+    display: block;
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
 }
 
 /* Version mobile */
